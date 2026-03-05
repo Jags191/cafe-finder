@@ -1,0 +1,4 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: sans-serif; background: #1a1a1a; color: white; }
+h1 { text-align: center; padding: 20px; }
+#map { height: 90vh; width: 100%; }
