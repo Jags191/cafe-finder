@@ -2,7 +2,7 @@
 
 A web app to find nearby cafés using Google Maps Platform API.
 
-## Features (planned)
+## Features
 - 📍 Detect user location
 - 🗺️ Show nearby cafés on a map
 - ⭐ Filter by ratings
@@ -11,7 +11,7 @@ A web app to find nearby cafés using Google Maps Platform API.
 ## Tech Stack
 - HTML / CSS / JavaScript
 - Google Maps Platform API
-- Gemini API (coming soon)
+- Gemini API
 
 ## Setup
 Clone the repo and add your Google Maps API key in `app.js`.
