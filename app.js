@@ -84,4 +84,8 @@ function searchCity() {
       map.setView([lat, lng], 15);
       loadCafes(lat, lng);
     });
+    document.getElementById("search-input")
+  .addEventListener("keypress", function(e) {
+    if (e.key === "Enter") searchCity();
+  });
 }
