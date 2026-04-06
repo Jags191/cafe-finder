@@ -1,5 +1,33 @@
 let map;
+let markers = [];
 
+function clearMarkers() {
+  markers.forEach(marker => marker.remove());
+  markers = [];
+}
+
+function loadCafes(lat, lng) {
+  clearMarkers(); // add this line at the top of loadCafes
+  const query = `
+    [out:json];
+    node["amenity"="cafe"](around:1500,${lat},${lng});
+    out body;
+  `;
+
+  fetch("https://overpass-api.de/api/interpreter", {
+    method: "POST",
+    body: query
+  })
+    .then(res => res.json())
+    .then(data => {
+      data.elements.forEach(cafe => {
+        const marker = L.marker([cafe.lat, cafe.lon])
+          .addTo(map)
+          .bindPopup(`☕ ${cafe.tags.name || "Café"}`);
+        markers.push(marker); // track each marker
+      });
+    });
+}
 function loadCafes(lat, lng) {
   const query = `
     [out:json];
