@@ -13,7 +13,13 @@
   <input type="text" id="search-input" placeholder="Search for cafés in a city..." />
   <button onclick="searchCity()">Search</button>
 </div>
+  <div id="app-container">
   <div id="map"></div>
+  <div id="sidebar">
+    <h2>Nearby Cafés</h2>
+    <ul id="cafe-list"></ul>
+  </div>
+</div>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
