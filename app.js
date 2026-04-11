@@ -88,4 +88,12 @@ function searchCity() {
   .addEventListener("keypress", function(e) {
     if (e.key === "Enter") searchCity();
   });
+  function locateMe() {
+  navigator.geolocation.getCurrentPosition((position) => {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    map.setView([lat, lng], 15);
+    loadCafes(lat, lng);
+  });
+}
 }
