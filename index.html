@@ -10,6 +10,11 @@
 <body>
   <h1>☕ Café Finder</h1>
   <div id="search-container">
+    <select id="radius-select">
+  <option value="500">500m</option>
+  <option value="1000" selected>1km</option>
+  <option value="2000">2km</option>
+</select>
   <input type="text" id="search-input" placeholder="Search for cafés in a city..." />
   <button onclick="searchCity()">Search</button>
 </div>
