@@ -7,13 +7,18 @@ function clearMarkers() {
 }
 
 function loadCafes(lat, lng) {
-  clearMarkers(); // add this line at the top of loadCafes
-  const query = `
-    [out:json];
-    node["amenity"="cafe"](around:1500,${lat},${lng});
-    out body;
-  `;
+  const name = cafe.tags.name || "Café";
+const hours = cafe.tags.opening_hours || "Hours not available";
+const phone = cafe.tags.phone || null;
 
+const marker = L.marker([cafe.lat, cafe.lon])
+  .addTo(map)
+  .bindPopup(`
+    <strong>☕ ${name}</strong><br/>
+    🕐 ${hours}<br/>
+    ${phone ? `📞 ${phone}` : ""}
+  `);
+markers.push(marker);
   fetch("https://overpass-api.de/api/interpreter", {
     method: "POST",
     body: query
