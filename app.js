@@ -60,9 +60,23 @@ function loadCafes(lat, lng) {
             🕐 ${hours}<br/>
             ${phone ? `📞 ${phone}` : ""}
           `);
+
+        // ✅ NEW — highlight sidebar on marker click
+        marker.on("click", () => {
+          document.querySelectorAll("#cafe-list li").forEach(el => {
+            el.style.background = "#2a2a2a";
+          });
+          const item = document.getElementById(`cafe-${cafe.id}`);
+          if (item) {
+            item.style.background = "#3a3020";
+            item.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        });
+
         markers.push(marker);
 
         const li = document.createElement("li");
+        li.id = `cafe-${cafe.id}`; // ✅ NEW — unique id for each sidebar item
         li.innerHTML = `
           <strong>${name}</strong><br/>
           <span style="color:#888; font-size:12px">📍 ${address}</span><br/>
