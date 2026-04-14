@@ -9,15 +9,18 @@ function clearMarkers() {
 function loadCafes(lat, lng) {
   clearMarkers();
 
-  const radius = document.getElementById("radius-select")
-    ? document.getElementById("radius-select").value
-    : 1500;
-
-  const query = `
-    [out:json];
-    node["amenity"="cafe"](around:${radius},${lat},${lng});
-    out body;
-  `;
+  const marker = L.marker([cafe.lat, cafe.lon])
+  .addTo(map)
+  .bindPopup(`
+    <strong>☕ ${name}</strong><br/>
+    🕐 ${hours}<br/>
+    ${phone ? `📞 ${phone}<br/>` : ""}
+    <button onclick="navigator.clipboard.writeText('${cafe.lat}, ${cafe.lon}')"
+      style="margin-top:6px; padding:4px 8px; background:#c8a165;
+             border:none; border-radius:4px; cursor:pointer; color:white; font-size:12px">
+      📋 Copy Coordinates
+    </button>
+  `);
 
   document.getElementById("loading").textContent = "Searching for cafés...";
   document.getElementById("results-count").textContent = "";
